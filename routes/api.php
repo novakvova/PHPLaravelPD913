@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,9 +27,9 @@ Route::group([
     'prefix' => 'auth'
 
 ], function ($router) {
-    Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
-    Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
-    Route::post('/refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
-    Route::get('/user-profile', [App\Http\Controllers\AuthController::class, 'userProfile']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
