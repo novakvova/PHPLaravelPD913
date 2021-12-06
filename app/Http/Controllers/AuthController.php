@@ -86,7 +86,7 @@ class AuthController extends Controller
 
 
         if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+            return response()->json(['error' => 'Дані введено не вірно!'], Response::HTTP_UNAUTHORIZED);
         }
 
         return $this->createNewToken($token);
@@ -172,7 +172,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $user = User::create(array_merge(
